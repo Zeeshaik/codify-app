@@ -23,9 +23,9 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 
 	const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!inputs.email || !inputs.password || !inputs.displayName) return alert("Please fill all fields");
+		if (!inputs.email || !inputs.password || !inputs.displayName) return toast.error("Please fill all fields");
 		try {
-			alert("Created your account")
+			toast.loading("Creating your account", { position: "top-center", toastId: "loadingToast" });
 			const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
 			if (!newUser) return;
 			const userData = {
@@ -42,7 +42,7 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 			await setDoc(doc(firestore, "users", newUser.user.uid), userData);
 			router.push("/");
 		} catch (error:any) {
-			alert(error.message)
+			toast.error(error.message, { position: "top-center" });
 		}
 		finally{
 			toast.dismiss("loadingToast");
@@ -56,7 +56,7 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 
     return (
 		<form className='space-y-6 px-6 pb-4' onSubmit={handleRegister}>
-			<h3 className='text-xl font-medium text-white'>Register to CodeFun</h3>
+			<h3 className='text-xl font-medium text-white'>Register to CodeFun </h3>
 			<div>
 				<label htmlFor='email' className='text-sm font-medium block mb-2 text-gray-300'>
 					Email
