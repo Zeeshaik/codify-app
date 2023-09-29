@@ -8,7 +8,7 @@ import EditorFooter from "./EditorFooter";
 import { Problem } from "@/utils/types/problem";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore } from "@/firebase/firebase";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { problems } from "@/utils/problems";
 import { useRouter } from "next/router";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
@@ -44,7 +44,11 @@ const Playground: React.FunctionComponent<IPlaygroundProps> = ({problem, setSucc
 	} = useRouter();
 	const handleSubmit = async () => {
 		if (!user) {
-			alert("Please login to submit your code");
+			toast.error("Please login to submit your code", {
+				position: "top-center",
+				autoClose: 3000,
+				theme: "dark",
+			});
 			return;
 		}
 		try {
@@ -55,7 +59,11 @@ const Playground: React.FunctionComponent<IPlaygroundProps> = ({problem, setSucc
 			if (typeof handler === "function") {
 				const success = handler(cb);
 				if (success) {
-					alert("Congrats! All tests passed!");
+					toast.success("Congrats! All tests passed!", {
+						position: "top-center",
+						autoClose: 3000,
+						theme: "dark",
+					});
 					setSuccess(true);
 					setTimeout(() => {
 						setSuccess(false);
@@ -73,9 +81,17 @@ const Playground: React.FunctionComponent<IPlaygroundProps> = ({problem, setSucc
 			if (
 				error.message.startsWith("AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:")
 			) {
-				alert("Oops! One or more test cases failed");
+				toast.error("Oops! One or more test cases failed", {
+					position: "top-center",
+					autoClose: 3000,
+					theme: "dark",
+				});
 			} else {
-				alert(error.message);
+				toast.error(error.message, {
+					position: "top-center",
+					autoClose: 3000,
+					theme: "dark",
+				});
 			}
 		}
 	};

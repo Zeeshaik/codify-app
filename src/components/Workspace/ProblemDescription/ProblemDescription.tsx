@@ -11,6 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { AiFillLike, AiFillDislike, AiOutlineLoading3Quarters, AiFillStar } from "react-icons/ai";
 import { BsCheck2Circle } from "react-icons/bs";
 import { TiStarOutline } from "react-icons/ti";
+import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 interface IProblemDescriptonProps {
 	problem: Problem;
@@ -33,7 +34,7 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 
 	const handleLike = async () => {
 		if (!user) {
-			alert("You must be logged in to like a problem");
+			toast.error("You must be logged in to like a problem", { position: "top-left", theme: "dark" });
 			return;
 		}
 		if (updating) return;
@@ -84,7 +85,7 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 
 	const handleDislike = async () => {
 		if (!user) {
-			alert("You must be logged in to dislike a problem");
+			toast.error("You must be logged in to dislike a problem", { position: "top-left", theme: "dark" });
 			return;
 		}
 		if (updating) return;
@@ -132,7 +133,7 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 
 	const handleStar = async () => {
 		if (!user) {
-			alert("You must be logged in to star a problem");
+			toast.error("You must be logged in to star a problem", { position: "top-left", theme: "dark" });
 			return;
 		}
 		if (updating) return;

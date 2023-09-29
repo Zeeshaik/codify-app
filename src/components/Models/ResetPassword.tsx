@@ -13,7 +13,7 @@ const ResetPassword: React.FunctionComponent<IResetPasswordProps> = (props) => {
 		e.preventDefault();
 		const success = await sendPasswordResetEmail(email);
 		if (success) {
-			alert("Password reset email sent");
+			toast.success("Password reset email sent", { position: "top-center", autoClose: 3000, theme: "dark" });
 		}
 	};
 

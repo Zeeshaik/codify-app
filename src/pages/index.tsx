@@ -8,6 +8,7 @@ import ProblemsTable from '@/components/ProblemsTable/ProblemsTable'
 import { useState } from 'react'
 import { setDoc, doc } from 'firebase/firestore'
 import { firestore } from '@/firebase/firebase'
+import HeroSec from '@/components/HomePage/HeroSec'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
       
       <main className='bg-dark-layer-2 min-h-screen'>
         <Topbar />
+        {/* <HeroSec /> */}
         <Link href='/problems'>
           <h2 className='bg-white p-2'>Problems</h2>
         </Link>
