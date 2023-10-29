@@ -68,7 +68,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
         <div className="absolute top-[340px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
           <p className=" mb-4">
             Humans use computer programs to communicate with machines. Without
-            computer programs, we wouldn't have smartphones, websites, or even
+            computer programs, we wouldn&apos;t have smartphones, websites, or even
             exploration in outer space!
           </p>
           <div className="flex ">

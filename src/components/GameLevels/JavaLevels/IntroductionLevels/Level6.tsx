@@ -50,10 +50,10 @@ const Level6: React.FC<Level6Props> = ({ onComplete, onPrevious }) => {
             Coders use outputs all the time to check that the computere is following the given instructions and fic problems with code.
           </p> <br />
           
-          <p>The following line of code displays Java's slogan on the screen as an output :</p> <br />
+          <p>The following line of code displays Java&apos;s slogan on the screen as an output :</p> <br />
           <div className=" font-mono bg-black">
             <span className=" ml-[720px] text-blue-700">JAVA</span>
-            <p className=" ml-[70px] pb-3"><span className=" text-blue-800">System</span>.<span className=" text-pink-500">out</span>.println(<span className=" text-green-600">"Write once, run Anywhere!"</span>);</p>
+            <p className=" ml-[70px] pb-3"><span className=" text-blue-800">System</span>.<span className=" text-pink-500">out</span>.println(<span className=" text-green-600">&apos;Write once, run Anywhere!&apos;</span>);</p>
           </div>
           
         </div>

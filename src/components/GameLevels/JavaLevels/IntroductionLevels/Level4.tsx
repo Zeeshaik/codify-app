@@ -65,8 +65,8 @@ const Level4: React.FC<Level4Props> = ({ onComplete, onPrevious }) => {
             Most computer programs are designed to prodce <span className="text-black">outputs</span>. Here are some examples:
           </p> <br />
           <ol className=" ">
-            <li>- "You've got a new message" notifications</li>
-            <li>- "Game Over" displayed om the screen when playing video games</li>
+            <li>- &apos;You&apos;ve got a new message&apos; notifications</li>
+            <li>- &apos;Game Over&apos; displayed om the screen when playing video games</li>
             <li>- Your account balance when checking your online banking app.</li>
           </ol>
           <br />

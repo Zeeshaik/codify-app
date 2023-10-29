@@ -33,7 +33,7 @@ const Level1: React.FC<Level1Props> = ({ onComplete }) => {
             <span>Java</span> is one of the most popular programming languages.
           </p>
           <p>
-            - Java's slogan is "Write Once, Run Anywhere". Java programs can run on different platforms, including Windows,
+            - Java&apos;s slogan is &apos;Write Once, Run Anywhere&apos;. Java programs can run on different platforms, including Windows,
             Mac, Linux, and mobile devices. You can use Java to build apps, games, websites, and much more!
           </p>
           <p>
