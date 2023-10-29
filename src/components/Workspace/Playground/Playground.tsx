@@ -11,7 +11,7 @@ import { auth, firestore } from "@/firebase/firebase";
 import { toast } from "react-toastify";
 import { problems } from "@/utils/problems";
 import { useRouter } from "next/router";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
 import useLocalStorage from "@/hooks/useLocalStorage";
  
 type IPlaygroundProps = {
@@ -70,10 +70,17 @@ const Playground: React.FunctionComponent<IPlaygroundProps> = ({problem, setSucc
 					}, 4000);
 
 					const userRef = doc(firestore, "users", user.uid);
-					await updateDoc(userRef, {
-						solvedProblems: arrayUnion(pid),
-					});
-					setSolved(true);
+					const userDoc = await getDoc(userRef)
+					if (!userDoc.data()?.solvedProblems.includes(pid)) {
+						const currentCoins = userDoc.data()?.coins || 0;
+			  
+						await updateDoc(userRef, {
+						  solvedProblems: arrayUnion(pid),
+						  coins: currentCoins + 10,
+						});
+			  
+						setSolved(true);
+					  }
 				}
 			}
 		} catch (error: any) {

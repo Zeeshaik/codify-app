@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/wordle/App.js", "src/pages/wordle/reportWebVitals.js", "src/pages/wordle/Words.js", "src/pages/wordle/index.js", "src/components/WordleCom/GameOver/GameOver.js", "src/components/WordleCom/Key/Key.js", "src/components/WordleCom/Keyboard/Keyboard.js", "src/components/WordleCom/Letter/Letter.js"],
   "exclude": ["node_modules"]
 }

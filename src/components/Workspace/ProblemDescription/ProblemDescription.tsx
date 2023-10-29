@@ -12,6 +12,8 @@ import { AiFillLike, AiFillDislike, AiOutlineLoading3Quarters, AiFillStar } from
 import { BsCheck2Circle } from "react-icons/bs";
 import { TiStarOutline } from "react-icons/ti";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
 // import { toast } from "react-toastify";
 interface IProblemDescriptonProps {
 	problem: Problem;
@@ -20,7 +22,7 @@ interface IProblemDescriptonProps {
 
 const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ problem, _solved }) => {
 	const { currentProblem, loading, problemDifficultyClass, setCurrentProblem } = useGetCurrentProblem(problem.id);
-	const { liked, disliked, solved, setData, starred } = useGetUsersDataOnProblem(problem.id); 
+	const { liked, disliked, solved, setData, starred } = useGetUsersDataOnProblem(problem.id);
 	const [user] = useAuthState(auth);
 	const [updating, setUpdating] = useState(false);
 
@@ -71,7 +73,7 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 				} else {
 					transaction.update(userRef, {
 						likedProblems: [...userDoc.data().likedProblems, problem.id],
-					}); 
+					});
 					transaction.update(problemRef, {
 						likes: problemDoc.data().likes + 1,
 					});
@@ -155,6 +157,8 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 
 		setUpdating(false);
 	};
+	const goldStyle = { color: 'gold' };
+	const whiteTextStyle = { color: 'white' };
 
 	return (
 		<div className='bg-dark-layer-1'>
@@ -173,49 +177,55 @@ const ProblemDescripton: React.FunctionComponent<IProblemDescriptonProps> = ({ p
 							<div className='flex-1 mr-2 text-lg text-white font-medium'>{problem?.title}</div>
 						</div>
 						{!loading && currentProblem && (
-						<div className='flex items-center mt-3'>
-							<div
-								className={`${problemDifficultyClass} inline-block rounded-[21px] bg-opacity-[.15] px-2.5 py-1 text-xs font-medium capitalize `}
-							>
-								{currentProblem.difficulty} 
-							</div>
-							{(solved || _solved) && (
-							<div className='rounded p-[3px] ml-4 text-lg transition-colors duration-200 text-green-s text-dark-green-s'>
-								<BsCheck2Circle />
-							</div>
-							)}
-							<div
-								className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-dark-gray-6'
-								onClick={handleLike}
-							>
-								{liked && !updating && <AiFillLike className='text-dark-blue-s' />}
-								{!liked && !updating && <AiFillLike />}
-								{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
+							<div className='flex items-center mt-3'>
+								<div
+									className={`${problemDifficultyClass} inline-block rounded-[21px] bg-opacity-[.15] px-2.5 py-1 text-xs font-medium capitalize `}
+								>
+									{currentProblem.difficulty}
+								</div>
+								{(solved || _solved) && (
+									<div className='rounded p-[3px] ml-4 text-lg transition-colors duration-200 text-green-s text-dark-green-s flex justify-between'>
+										<BsCheck2Circle className="mr-2" />
+										<div className="flex items-center">
+											<FontAwesomeIcon icon={faCoins} style={goldStyle} className="mr-1" />
+											<span style={whiteTextStyle}>10</span>
+										</div>
+									</div>
+
+								)}
+
+								<div
+									className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-dark-gray-6'
+									onClick={handleLike}
+								>
+									{liked && !updating && <AiFillLike className='text-dark-blue-s' />}
+									{!liked && !updating && <AiFillLike />}
+									{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
 
 
-								<span className='text-xs'>{currentProblem.likes}</span>
-							</div>
-							<div
-								className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-green-s text-dark-gray-6'
-								onClick={handleDislike}
-							>
-								{disliked && !updating && <AiFillDislike className='text-dark-blue-s' />}
-								{!disliked && !updating && <AiFillDislike />}
-								{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
+									<span className='text-xs'>{currentProblem.likes}</span>
+								</div>
+								<div
+									className='flex items-center cursor-pointer hover:bg-dark-fill-3 space-x-1 rounded p-[3px]  ml-4 text-lg transition-colors duration-200 text-green-s text-dark-gray-6'
+									onClick={handleDislike}
+								>
+									{disliked && !updating && <AiFillDislike className='text-dark-blue-s' />}
+									{!disliked && !updating && <AiFillDislike />}
+									{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
 
-								<span className='text-xs'>{currentProblem.dislikes}</span>
+									<span className='text-xs'>{currentProblem.dislikes}</span>
+								</div>
+								<div
+									className='cursor-pointer hover:bg-dark-fill-3  rounded p-[3px]  ml-4 text-xl transition-colors duration-200 text-green-s text-dark-gray-6 '
+									onClick={handleStar}
+								>
+									{starred && !updating && <AiFillStar className='text-dark-yellow' />}
+									{!starred && !updating && <TiStarOutline />}
+									{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
+								</div>
 							</div>
-							<div
-								className='cursor-pointer hover:bg-dark-fill-3  rounded p-[3px]  ml-4 text-xl transition-colors duration-200 text-green-s text-dark-gray-6 '
-							onClick={handleStar}
-							>
-								{starred && !updating && <AiFillStar className='text-dark-yellow' />}
-								{!starred && !updating && <TiStarOutline />}
-								{updating && <AiOutlineLoading3Quarters className='animate-spin' />}
-							</div>
-						</div>
-					)}
-						
+						)}
+
 						{loading && (
 							<div className='mt-3 flex space-x-2'>
 								<RectangleSkeleton />
@@ -292,8 +302,8 @@ function useGetCurrentProblem(problemId: string) {
 					problem.difficulty === "Easy"
 						? "bg-olive text-olive"
 						: problem.difficulty === "Medium"
-						? "bg-dark-yellow text-dark-yellow"
-						: " bg-dark-pink text-dark-pink"
+							? "bg-dark-yellow text-dark-yellow"
+							: " bg-dark-pink text-dark-pink"
 				);
 			}
 			setLoading(false);
