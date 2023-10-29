@@ -51,7 +51,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
           <p>💡 You can write code that generates <span className="font-bold text-3xl">outputs</span> with the <span className="font-bold text-3xl">System.out.println()</span> statement.</p>
           <p>💡 The println instruction needs to be followed by parentheses</p>
           <br />
-          <h3 className="text-4xl text-black">What's next ⁉️</h3>
+          <h3 className="text-4xl text-black">What&apos;s next ⁉️</h3>
           <p>In the next lesson. You will create cod ewith multiple lines and different types of data.</p>
         </div>
 

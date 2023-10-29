@@ -36,7 +36,7 @@ const Level11: React.FC<Level11Props> = ({ onPrevious }) => {
         />
         <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
         <LessonComplete />
-        <p>You learned Getting started with Java. You're one step closer to reachin your goals </p>
+        <p>You learned Getting started with Java. You&apos;re one step closer to reachin your goals </p>
         </div>
             
         {/* Add your content here */}
