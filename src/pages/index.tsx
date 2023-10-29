@@ -9,6 +9,9 @@ import { useState } from 'react'
 import { setDoc, doc } from 'firebase/firestore'
 import { firestore } from '@/firebase/firebase'
 import HeroSec from '@/components/HomePage/HeroSec'
+
+import Footer from '@/components/Footer/Footer'
+import Sections from '@/components/Sections/Sections'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -46,14 +49,15 @@ export default function Home() {
 
   return (
     <>
-      
+
       <main className='bg-dark-layer-2 min-h-screen'>
         <Topbar />
-        {/* <HeroSec /> */}
-        <Link href='/problems'>
-          <h2 className='bg-white p-2'>Problems</h2>
-        </Link>
-
+        <HeroSec />
+        <Sections />
+        <br />
+        
+      
+        <Footer/>
 
         {/* Form to add problems to DB */}
         {/* <form className='p-6 flex-col max-w-sm gap-3' onSubmit={handleSubmit}>

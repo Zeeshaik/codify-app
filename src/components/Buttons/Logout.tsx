@@ -9,7 +9,7 @@ const Logout: React.FunctionComponent = (props) => {
 	const handleLogout = () => {
 		signOut();
 	}; 
-  return <button className='bg-dark-fill-3 py-1.5 px-3 cursor-pointer rounded text-brand-orange' onClick={handleLogout}>
+  return <button className='bg-dark-fill-3 py-1.5 px-3 cursor-pointer rounded text-orange-400' onClick={handleLogout}>
     <FiLogOut />
   </button>;
 };

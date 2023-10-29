@@ -1,7 +1,7 @@
 import { auth } from '@/firebase/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
 import * as React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import Image from "next/image";
 import Logout from '../Buttons/Logout';
 import { authModalState } from '@/atoms/authModelAtom';
@@ -13,14 +13,14 @@ import { problems } from '@/utils/problems';
 import { Problem } from '@/utils/types/problem';
 
 type ITopbarProps = {
-    problemPage?: boolean;
+	problemPage?: boolean;
 };
 
 const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
-    const [user] = useAuthState(auth);
-    const setAuthModalState = useSetRecoilState(authModalState);
+	const [user] = useAuthState(auth);
+	const setAuthModalState = useSetRecoilState(authModalState);
 	const router = useRouter();
-	
+
 	const handleProblemChange = (isForward: boolean) => {
 		const { order } = problems[router.query.pid as string] as Problem;
 		const direction = isForward ? 1 : -1;
@@ -40,16 +40,16 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 		}
 	};
 
-    return (
-        <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7'>
-            <div className={`flex w-full items-center justify-between max-w-[1200px] mx-auto`}>
-                <Link href='/' className='h-[22px] flex-1'>
-                    <img src="/logo-full.png" alt="Logo" className='h-full' />
-                </Link>
+	return (
+		<nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7'>
+			<div className={`flex w-full items-center justify-between ${!problemPage ? "max-w-[1200px] mx-auto" : ""}`}>
+				<Link href='/' className='h-[22px] flex-1'>
+					<Image src='/logo-full.png' alt='Logo' height={100} width={100} />
+				</Link>
 
-                {problemPage && (
-                   <div className='flex items-center gap-4 flex-1 justify-center'>
-                    <div
+				{problemPage && (
+					<div className='flex items-center gap-4 flex-1 justify-center'>
+						<div
 							className='flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer'
 							onClick={() => handleProblemChange(false)}
 						>
@@ -64,19 +64,18 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 							</div>
 							<p>Problem List</p>
 						</Link>
-                        <div
+						<div
 							className='flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer'
 							onClick={() => handleProblemChange(true)}
 						>
 							<BsChevronRight />
 						</div>
-                   </div> 
-                   
-                )}
+					</div>
+				)}
 
-                <div className='flex items-center gap-4 flex-1 justify-center'>
-                    <div>
-                        <a
+				<div className='flex items-center space-x-4 flex-1 justify-end'>
+					<div>
+						<a
 							href='https://www.buymeacoffee.com/burakorkmezz'
 							target='_blank'
 							rel='noreferrer'
@@ -84,16 +83,17 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 						>
 							Premium
 						</a>
-                    </div>
-                    {!user && (
-                    <Link href='/auth'
-                        onClick={() => setAuthModalState((prev) => ({ ...prev, isOpen: true, type: "login" }))}
-                    >
-                        <button className='bg-dark-fill-3 py-1 px-2 cursor-pointer rounded '>Sign In</button>
-                    </Link>
-                    )}
-                    {user && problemPage && <Timer />}
-                    {user && (
+					</div>
+					{!user && (
+						<Link
+							href='/auth'
+							onClick={() => setAuthModalState((prev) => ({ ...prev, isOpen: true, type: "login" }))}
+						>
+							<button className='bg-dark-fill-3 py-1 px-2 cursor-pointer rounded '>Sign In</button>
+						</Link>
+					)}
+					{user && problemPage && <Timer />}
+					{user && (
 						<div className='cursor-pointer group relative'>
 							<Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' />
 							<div
@@ -105,12 +105,11 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 							</div>
 						</div>
 					)}
-
-                    {user && <Logout />}
-                </div>
-            </div>
-        </nav>
-    )
+					{user && <Logout />}
+				</div>
+			</div>
+		</nav>
+	);
 };
 
 export default Topbar;

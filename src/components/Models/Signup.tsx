@@ -38,6 +38,8 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 				dislikedProblems: [],
 				solvedProblems: [],
 				starredProblems: [],
+				coins : 0,
+				tags : [],
 			};
 			await setDoc(doc(firestore, "users", newUser.user.uid), userData);
 			router.push("/");
@@ -50,7 +52,7 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 	};
 
 	useEffect(() => {
-		if (error) alert(error.message);
+		if (error) toast.error("Email Already in Use", { position: "top-center"});
 	}, [error]);
 
 
