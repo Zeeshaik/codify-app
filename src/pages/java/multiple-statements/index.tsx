@@ -1,19 +1,20 @@
-import Level1 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level1';
-import Level10 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level10';
-import Level11 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level11';
-import Level2 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level2';
-import Level3 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level3';
-import Level4 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level4';
-import Level5 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level5';
-import Level6 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level6';
-import Level7 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level7';
-import Level8 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level8';
-import Level9 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level9';
+
+import Level1 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level1';
+import Level10 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level10';
+import Level11 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level11';
+import Level2 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level2';
+import Level3 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level3';
+import Level4 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level4';
+import Level5 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level5';
+import Level6 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level6';
+import Level7 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level7';
+import Level8 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level8';
+import Level9 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level9';
 import Topbar from '@/components/Topbar/Topbar';
 import React, { useEffect, useState } from 'react';
 
 
-const IntroductionLevel = () => {
+const MultipleStatements = () => {
   
   const [currentLevel, setCurrentLevel] = useState(1);
   useEffect(() => {
@@ -43,7 +44,7 @@ const IntroductionLevel = () => {
     <div className=' bg-dark-layer-2 min-h-screen'>
       <Topbar />
       <div>
-        <h1 className=' text-2xl md:text-4xl font-bold mb-4 md:ml-[550px] text-white mt-7'>Introduction to Java Programming</h1>
+        <h1 className='text-4xl font-bold mb-4 md:ml-[550px] text-white mt-7'>Multiple Statements</h1>
         {/* Render components based on the current level */}
         {currentLevel === 1 && <Level1 onComplete={handleLevelComplete} />}
         {currentLevel === 2 && <Level2 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
@@ -62,4 +63,4 @@ const IntroductionLevel = () => {
   );
 };
 
-export default IntroductionLevel;
+export default MultipleStatements;

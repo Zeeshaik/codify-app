@@ -29,7 +29,18 @@ module.exports = {
 				"dark-green-s": "rgb(44 187 93)",
 				"dark-blue-s": "rgb(10 132 255)",
 			},
+			right: {
+				'5': '5px',
+				'150': '150px',
+				'750': '750px',
+			  },
 		},
 	},
+	variants: {
+		extend: {
+		  right: ['responsive', 'hover', 'focus'],
+		  // other variants
+		},
+	  },
 	plugins: [],
 };

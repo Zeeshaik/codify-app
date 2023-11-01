@@ -17,6 +17,12 @@ export interface QuizData {
         options:["false" , "true"],
         answer: 2,
         completed : false,
+    },
+    {
+        question: "Each statement needs to end with a ?",
+        options:["Angle bracket >" , "Semicolon ;"],
+        answer: 2,
+        completed : false,
     }
 ]
 

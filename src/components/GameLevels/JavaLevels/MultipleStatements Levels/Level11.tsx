@@ -22,7 +22,7 @@ const Level11: React.FC<Level11Props> = ({ onPrevious }) => {
   return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
         style={{ fontFamily: "cursive" }}
       >
         {/* Adding Java-related icons to the background */}
@@ -34,11 +34,11 @@ const Level11: React.FC<Level11Props> = ({ onPrevious }) => {
           icon={faCode}
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl font-bold md:w-[800px]">
+        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
         <LessonComplete />
         <p>You learned Getting started with Java. You&apos;re one step closer to reachin your goals. </p>
         </div>
-        <Previous onPrevious={handlePrevious} />
+        <Previous onPrevious={handlePrevious} />  
         {/* Add your content here */}
       </div>
 

@@ -13,7 +13,7 @@ const Previous: React.FunctionComponent<IPreviousProps> = ({onPrevious}) => {
     <div>
         <button
         onClick={handlePrevious}
-        className="bg-gray-900 text-white px-6 py-3 mt-4 absolute bottom-20 left-[430px] rounded-full hover:bg-gray-600 transition duration-300"
+        className="bg-gray-900 text-white px-6 py-3 mt-4 absolute bottom-5 md:bottom-10 left-6 md:left-[150px] rounded-full hover:bg-gray-600 transition duration-300"
       >
         Previous
       </button>

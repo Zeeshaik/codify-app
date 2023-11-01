@@ -9,7 +9,6 @@ export default function Example() {
       className=" relative  flex  min-h-screen justify-center bg-dark-layer-2"
     >
       
-      <div className=' absolute inset-y-16 inset-x-0 w-52 rounded-full rotate-45 bg-gradient-to-b from-orange-500 to-purple-500 blur-3xl mx-auto scale-y-150'></div>
       <section className="container items-center px-4 pb-12 mx-auto lg:flex md:px-10 lg:px-20 xl:px-40">
         <div className="flex-1 space-y-4 sm:text-center lg:text-left mt-52 text-white">
           <h1 className="text-6xl font-bold text-orange-500 mb-4">

@@ -49,7 +49,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
   return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
         style={{ fontFamily: "cursive" }}
       >
         {/* Adding Java-related icons to the background */}
@@ -62,18 +62,18 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
 
-        <div className="header text-white mt-9 ml-16">
-          <h2 className="font-bold mb-4 text-4xl underline">Coding</h2>
+        <div className="header text-white mt-9 md:ml-16 ml-5">
+          <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Coding</h2>
         </div>
-        <div className="absolute top-[340px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
+        <div className="absolute top-[340px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left md:text-2xl font-bold w-[300px] md:w-[800px]">
           <p className=" mb-4">
             Humans use computer programs to communicate with machines. Without
             computer programs, we wouldn&apos;t have smartphones, websites, or even
             exploration in outer space!
           </p>
-          <div className="flex ">
+          <div className="flex flex-col w-[300px] h-[200px] md:flex-row md:w-[800px] ">
             <Image src="/code.png" alt="Code Image" width={500} height={500} />
-            <p className=" text-xl ml-9 mt-9 text-center">
+            <p className=" ml-3 mt-4 md:ml-9 md:mt-3 text-center">
              
               Learning some coding can help you innovate and create different
               solutions to problems, giving you a competitive edge in this
@@ -81,16 +81,16 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
             </p>
           </div>
           
-          <div className="flex text-xl">
+          <div className="flex mt-16 md:text-xl">
             <Image src="/code1.png" alt="code image" width={90} height={90}/> 
            <p className=" mt-12 ml-2 text-left"> <span className=" text-black">Everyone</span> can learn coding with CodeFun.</p>
           </div>
         </div>
-
+        <Continue onComplete={handleComplete}/>
+      <Previous onPrevious={handlePrevious}/>
         {/* Add your content here */}
       </div>
-      <Continue onComplete={handleComplete}/>
-      <Previous onPrevious={handlePrevious}/>
+      
     </div>
   );
 };

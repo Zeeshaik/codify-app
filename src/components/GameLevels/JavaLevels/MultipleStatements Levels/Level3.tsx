@@ -27,7 +27,7 @@ const Level3: React.FC<Level3Props> = ({ onComplete, onPrevious }) => {
   return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden  md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden m-2 md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
         style={{ fontFamily: "cursive" }}
       >
         {/* Adding Java-related icons to the background */}
@@ -39,11 +39,11 @@ const Level3: React.FC<Level3Props> = ({ onComplete, onPrevious }) => {
           icon={faCode}
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
-        <div className="header text-white mt-3 ml-3 md:mt-9 md:ml-16">
-          <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Challenge 1</h2>
+        <div className="header text-white mt-9 ml-16">
+          <h2 className="font-bold mb-4 text-4xl underline">Challenge 1</h2>
         </div>
-        <div className=" md:ml-72 md:mt-7">
-          <QuizComponent currentQuestion={0} />
+        <div className=" ml-72 mt-7">
+          <QuizComponent currentQuestion={2} />
         </div>
         <Continue onComplete={handleComplete}/>
       <Previous onPrevious={handlePrevious}/>
