@@ -40,7 +40,7 @@ const QuizComponent: React.FunctionComponent<IQuizComponentProps> = ({ currentQu
         <div className="question">
           <h1>{quizPrblm[currentQuestion].question}</h1>
         </div>
-        <div className="option-container">
+        <div className=" w-[300px] md:p-10 md:w-full">
           {quizPrblm[currentQuestion].options.map((option, index) => (
             <button
             key={index}
@@ -52,7 +52,7 @@ const QuizComponent: React.FunctionComponent<IQuizComponentProps> = ({ currentQu
             </button>
           ))}
         </div>
-        <input type="button" value="Submit" onClick={handleNextQuestion} id="next-button" />
+        <input type="button" className=" bg-green-400 p-2 rounded-xl hover:bg-orange-400 hover:border-spacing-0 hover:cursor-pointer" value="Submit" onClick={handleNextQuestion}  />
       </div>
     </div>
   );

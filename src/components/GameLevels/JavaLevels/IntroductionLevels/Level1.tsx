@@ -18,17 +18,17 @@ const Level1: React.FC<Level1Props> = ({ onComplete }) => {
   return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
         style={{ fontFamily: "cursive" }}
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon icon={faCoffee} className="text-black absolute top-1/4 left-1/4 text-6xl opacity-30 blur-sm" />
         <FontAwesomeIcon icon={faCode} className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm" />
 
-        <div className="header text-white mt-9 ml-16">
-          <h2 className="font-bold mb-4 text-4xl underline">Welcome to Java!🍵</h2>
+        <div className="header text-white mt-9 ml:10 md:ml-16">
+          <h2 className="font-bold mb-4 text-3xl md:text-4xl underline">Welcome to Java!🍵</h2>
         </div>
-        <div className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
+        <div className="absolute top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left md:text-2xl font-bold w-[300px] md:w-[800px]">
           <p>
             <span>Java</span> is one of the most popular programming languages.
           </p>
@@ -42,10 +42,11 @@ const Level1: React.FC<Level1Props> = ({ onComplete }) => {
             and designed to be easy to write and understand.
           </p>
         </div>
+        <Continue onComplete={handleComplete}/>
       </div>
 
       {/* "Complete Level 1" button at the bottom right corner */}
-      <Continue onComplete={handleComplete}/>
+      
       
 
       {/* Your level-specific content */}

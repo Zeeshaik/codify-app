@@ -29,7 +29,7 @@ const Level6: React.FC<Level6Props> = ({ onComplete, onPrevious }) => {
    return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
         style={{ fontFamily: "cursive" }}
       >
         {/* Adding Java-related icons to the background */}
@@ -42,26 +42,26 @@ const Level6: React.FC<Level6Props> = ({ onComplete, onPrevious }) => {
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
 
-        <div className="header text-white mt-9 ml-16">
-          <h2 className="font-bold mb-4 text-4xl underline">Output</h2>
+        <div className="header text-white ml-3 mt-3 md:mt-9 md:ml-16">
+          <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Output</h2>
         </div>
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
+        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl font-bold w-[300px] md:w-[800px]">
           <p className=" mb-4">
             Coders use outputs all the time to check that the computere is following the given instructions and fic problems with code.
           </p> <br />
           
           <p>The following line of code displays Java&apos;s slogan on the screen as an output :</p> <br />
-          <div className=" font-mono bg-black">
-            <span className=" ml-[720px] text-blue-700">JAVA</span>
-            <p className=" ml-[70px] pb-3"><span className=" text-blue-800">System</span>.<span className=" text-pink-500">out</span>.println(<span className=" text-green-600">&apos;Write once, run Anywhere!&apos;</span>);</p>
+          <div className=" font-mono bg-black p-4 md:p-0 text-lg md:text-2xl">
+            <span className=" ml-[230px] md:ml-[720px] text-blue-700">JAVA</span>
+            <p className=" md:ml-[70px] pb-3"><span className=" text-blue-800">System</span>.<span className=" text-pink-500">out</span>.println(<span className=" text-green-600">&apos;Write once, run Anywhere!&apos;</span>);</p>
           </div>
           
         </div>
-
+        <Continue onComplete={handleComplete}/>
+      <Previous onPrevious={handlePrevious}/>
         {/* Add your content here */}
       </div>
-      <Continue onComplete={handleComplete}/>
-      <Previous onPrevious={handlePrevious}/>
+      
     </div>
   );
 };

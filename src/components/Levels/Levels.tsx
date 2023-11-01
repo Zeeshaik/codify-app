@@ -16,8 +16,8 @@ const levels: ILevelsProps[] = [
   },
   {
     title: "Multiple Statements",
-    description: "Learn how multiple ",
-    link: "",
+    description: "Learn how multiple statements works.",
+    link: "/java/multiple-statements",
   },
   {
     title: "Introduction",
