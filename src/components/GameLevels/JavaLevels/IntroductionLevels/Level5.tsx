@@ -28,7 +28,7 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden m-2 md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
-        style={{ fontFamily: "cursive" }}
+        
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -42,7 +42,7 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
         <div className="header text-white mt-3 ml-3 md:mt-9 md:ml-16">
           <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Challenge 2</h2>
         </div>
-        <div className=" mt-7">
+        <div className=" md:ml-72 md:mt-7">
           <QuizComponent currentQuestion={1} />
         </div>
         <Continue onComplete={handleComplete}/>

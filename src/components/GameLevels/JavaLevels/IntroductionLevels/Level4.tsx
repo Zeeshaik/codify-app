@@ -45,7 +45,7 @@ const Level4: React.FC<Level4Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
-        style={{ fontFamily: "cursive" }}
+
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -60,7 +60,7 @@ const Level4: React.FC<Level4Props> = ({ onComplete, onPrevious }) => {
         <div className="header text-white md:mt-9 md:ml-16 ml-3 mt-3">
           <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Output</h2>
         </div>
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl font-bold w-[300px] md:w-[800px]">
+        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
           <p className=" mb-4">
             Most computer programs are designed to prodce <span className="text-black">outputs</span>. Here are some examples:
           </p> <br />

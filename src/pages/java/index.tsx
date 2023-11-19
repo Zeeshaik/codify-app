@@ -1,11 +1,13 @@
 import JavaGame from '@/components/Games/JavaGame/JavaGame';
 import Topbar from '@/components/Topbar/Topbar';
+import FooterComponent from '@/components/Footer/Footer';
 import Link from 'next/link';
 import * as React from 'react';
 import { useRef } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { SteppedLineTo } from 'react-lineto';
 import Levels from '@/components/Levels/Levels';
+
 
 export interface IJavaHomePageProps { }
 
@@ -154,6 +156,9 @@ export function JavaHomePage(props: IJavaHomePageProps) {
         Start Learning Java
       </h3>
       <Levels />
+      <br />
+      <br />
+      <FooterComponent />
     </div>
   );
 }
