@@ -36,7 +36,7 @@ const QuizComponent: React.FunctionComponent<IQuizComponentProps> = ({ currentQu
 
   return (
     <div>
-      <div className="container1 text-white">
+      <div className="container1 ml-2 text-white">
         <div className="question">
           <h1>{quizPrblm[currentQuestion].question}</h1>
         </div>

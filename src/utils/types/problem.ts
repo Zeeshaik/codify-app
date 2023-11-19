@@ -30,3 +30,9 @@ export type DBProblem = {
 	videoId?: string;
 	link?: string;
 };
+
+export type Java = {
+	id : string;
+	completed: boolean;
+	score: number;
+}

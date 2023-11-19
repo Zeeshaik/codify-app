@@ -28,7 +28,7 @@ const Level3: React.FC<Level3Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden  md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
-        style={{ fontFamily: "cursive" }}
+     
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon

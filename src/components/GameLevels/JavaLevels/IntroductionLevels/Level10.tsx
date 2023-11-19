@@ -45,7 +45,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
         <div className="header text-white ml-3 mt-3 md:mt-9 md:ml-16">
           <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Lesson Takeaways</h2>
         </div>
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl font-bold w-[300px] md:w-[800px]">
+        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
           <p>Awesome! You completed your first lesson 🚀.</p>
           <p>Remember the following important points:</p>
           <p>💡 You can write code that generates <span className="font-bold text-2xl md:text-3xl">outputs</span> with the <span className="font-bold text-2xl md:text-3xl">System.out.println()</span> statement.</p>

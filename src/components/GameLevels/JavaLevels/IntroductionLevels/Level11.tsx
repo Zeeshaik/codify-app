@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { faCoffee, faCode } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-
+import { Java } from "@/utils/types/problem"
+import { java } from "@/utils/java";
 import Previous from "@/components/Buttons/Previous";
 import LessonComplete from "@/components/LessoonComplete/LessonComplete";
+import SubmitLevel from "@/components/Buttons/SubmitLevel";
 interface Level11Props {
   onPrevious: () => void; // Callback for going to the previous level
 }
@@ -34,11 +36,12 @@ const Level11: React.FC<Level11Props> = ({ onPrevious }) => {
           icon={faCode}
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl font-bold md:w-[800px]">
+        <div className="absolute top-[150px] md:top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
         <LessonComplete />
         <p>You learned Getting started with Java. You&apos;re one step closer to reachin your goals. </p>
         </div>
         <Previous onPrevious={handlePrevious} />
+       
         {/* Add your content here */}
       </div>
 
@@ -48,3 +51,27 @@ const Level11: React.FC<Level11Props> = ({ onPrevious }) => {
 };
 
 export default Level11;
+
+
+export async function getStaticPaths() {
+	const paths = Object.keys(java).map((key) => ({
+		params: { pid: key },
+	}));
+
+	return {
+		paths,
+		fallback: false,
+	};
+}
+
+export async function getStaticProps({ params }: { params: { pid: string } }) {
+	const { pid } = params;
+	const problem = java[pid];
+
+	if (!problem) {
+		return {
+			notFound: true,
+		};
+	}
+	 
+}

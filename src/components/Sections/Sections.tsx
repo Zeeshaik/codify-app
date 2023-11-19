@@ -32,12 +32,8 @@ const projects: ISectionsProps[] = [
 const ProjectCard: React.FC<ISectionsProps> = ({ image, title, description, links }) => (
   <div className="bg-tertiary p-5 rounded-2xl sm:w-[340px] w-full transform hover:scale-105 transition-transform bg-orange-400 hover:bg-dark-layer-2 hover:border-orange-400 border border-orange-500 ">
     <div className="relative w-full h-[230px]">
-      <img src={image} alt="project_image" className="w-full h-full object-cover rounded-2xl" />
-      <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
-        <div className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer">
-          <img src="/assets/github-3b4e1609.png" alt="source code" className="w-6 h-6 object-contain" />
-        </div>
-      </div>
+      <img src={image} alt="project_image" className=" w-[300px] h-[250px] m-auto md:w-full md:h-full object-cover rounded-2xl" />
+      
     </div>
     <div className="mt-5">
       <Link href={links} passHref className="text-brand-orange hover:underline">
@@ -58,7 +54,7 @@ const Sections: React.FC = () => (
     <h1 className="text-4xl lg:text-5xl font-bold text-center mb-8 text-brand-orange">
       Play To Learn
     </h1>
-    <div className="flex flex-wrap gap-7">
+    <div className="flex flex-wrap gap-10 text-center">
       {projects.map((project, index) => (
         <ProjectCard key={index} {...project} />
       ))}

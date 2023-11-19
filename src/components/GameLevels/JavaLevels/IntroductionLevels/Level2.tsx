@@ -50,7 +50,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
-        style={{ fontFamily: "cursive" }}
+       
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -62,10 +62,10 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
 
-        <div className="header text-white mt-9 md:ml-16 ml-5">
+        <div className="header text-white mt-3 ml-3 md:mt-9 md:ml-16">
           <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Coding</h2>
         </div>
-        <div className="absolute top-[340px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left md:text-2xl font-bold w-[300px] md:w-[800px]">
+        <div className="absolute top-[340px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
           <p className=" mb-4">
             Humans use computer programs to communicate with machines. Without
             computer programs, we wouldn&apos;t have smartphones, websites, or even
@@ -81,7 +81,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
             </p>
           </div>
           
-          <div className="flex mt-16 md:text-xl">
+          <div className="flex mt-24 md:mt-8 md:text-xl">
             <Image src="/code1.png" alt="code image" width={90} height={90}/> 
            <p className=" mt-12 ml-2 text-left"> <span className=" text-black">Everyone</span> can learn coding with CodeFun.</p>
           </div>
