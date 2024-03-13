@@ -23,6 +23,12 @@ export interface QuizData {
         options:["Angle bracket >" , "Semicolon ;"],
         answer: 2,
         completed : false,
+    },
+    {
+        question: "Java is a ?",
+        options: ["case-insensitive language", "case-sensitive language"],
+        answer : 2,
+        completed : false,
     }
 ]
 

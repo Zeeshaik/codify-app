@@ -1,36 +1,34 @@
 // Level10.tsx
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { faCoffee, faCode } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faCode } from "@fortawesome/free-solid-svg-icons"; // Import Java-related icons
+
+
+import QuizComponent from "@/components/Quiz/Quiz";
 import Continue from "@/components/Buttons/Continue";
 import Previous from "@/components/Buttons/Previous";
+
+
 interface Level10Props {
-  onComplete:() => void;
-  onPrevious: () => void; // Callback for going to the previous level
+  onComplete: () => void;
+  onPrevious: () => void;
 }
 
 const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
-    const handleComplete = () => {
-        console.log("Level 1 completed!");
-        onComplete();
-      };
-    
-
-  const handlePrevious = () => {
-    // Handle logic to go to the previous level
-    onPrevious();
+  const handleComplete = () => {
+    console.log("Level 1 completed!");
+    onComplete();
   };
 
-  const [code, setCode] = useState("");
-
-
-   return (
+  const handlePrevious = () => {
+    onPrevious();
+  };
+  const [selectedOption, setSelectedOption] = useState("");
+  return (
     <div>
       <div
-        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
-        style={{ fontFamily: "cursive" }}
+        className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md md:h-[700px] relative overflow-hidden m-2 md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80 "
+        
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -41,25 +39,22 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
           icon={faCode}
           className="text-black absolute bottom-1/4 right-1/4 text-sm opacity-10 blur-sm"
         />
-
         <div className="header text-white mt-9 ml-16">
-          <h2 className="font-bold mb-4 text-4xl underline">Lesson Takeaways</h2>
+          <h2 className="font-bold mb-4 text-4xl underline">Challenge 1</h2>
         </div>
-        <div className="absolute top-[300px] left-1/2  -translate-x-1/2 -translate-y-1/2 text-white text-left text-2xl font-bold w-[800px]">
-          <p>Awesome! You completed your first lesson 🚀.</p>
-          <p>Remember the following important points:</p>
-          <p>💡 You can write code that generates <span className="font-bold text-3xl">outputs</span> with the <span className="font-bold text-3xl">System.out.println()</span> statement.</p>
-          <p>💡 The println instruction needs to be followed by parentheses</p>
-          <br />
-          <h3 className="text-4xl text-black">What&apos;s next ⁉️</h3>
-          <p>In the next lesson. You will create cod ewith multiple lines and different types of data.</p>
+        <div className=" md:ml-72 mt-7">
+          <QuizComponent currentQuestion={3} />
         </div>
-
+        <br />
+        <br />
+        <br />
         <Continue onComplete={handleComplete}/>
       <Previous onPrevious={handlePrevious}/>
-        {/* Add your content here */}
       </div>
+
+      {/* "Complete Level 1" button at the bottom right corner */}
       
+      {/* Your level-specific content */}
     </div>
   );
 };

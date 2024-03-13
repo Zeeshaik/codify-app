@@ -31,7 +31,9 @@ const Level7: React.FC<Level7Props> = ({ onComplete, onPrevious }) => {
   };
 
   const [code, setCode] = useState("");
-  const [selectedOption, setSelectedOption] = React.useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = React.useState<string | null>(
+    null
+  );
   const [isOptionDropped, setIsOptionDropped] = React.useState(false);
 
   const handleDrop = (droppedOption: string) => {
@@ -41,8 +43,7 @@ const Level7: React.FC<Level7Props> = ({ onComplete, onPrevious }) => {
     setCode(droppedOption);
     // Validate if the dropped option is correct
     if (droppedOption === "New Message") {
-      
-      toast.success("Congratulations You know now how to use Output")
+      toast.success("Congratulations You know now how to use Output");
       // Handle other logic for correct drop
     } else {
       toast.error("Incorrect option dropped. Try again.");
@@ -80,13 +81,26 @@ const Level7: React.FC<Level7Props> = ({ onComplete, onPrevious }) => {
             <p className=" md:ml-[70px] pb-3 flex">
               <span className=" text-blue-800">System</span>.
               <span className=" text-pink-500">out</span>.println(
-              <span className=" text-green-600 flex"> &quot; <DroppableSection onDrop={handleDrop} isOptionDropped={isOptionDropped} droppedText={selectedOption}/> &quot;</span>);
+              <span className=" text-green-600 flex">
+                {" "}
+                &quot;{" "}
+                <DroppableSection
+                  onDrop={handleDrop}
+                  isOptionDropped={isOptionDropped}
+                  droppedText={selectedOption}
+                />{" "}
+                &quot;
+              </span>
+              );
             </p>
           </div>
           <br />
           <div className="options flex gap-3">
-            <DraggableOption optionText="New Message" setSelectedOption={setSelectedOption} isDropped={isOptionDropped}/>
-            
+            <DraggableOption
+              optionText="New Message"
+              setSelectedOption={setSelectedOption}
+              isDropped={isOptionDropped}
+            />
           </div>
         </div>
 

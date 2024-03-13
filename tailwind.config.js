@@ -42,5 +42,9 @@ module.exports = {
 		  // other variants
 		},
 	  },
-	plugins: [],
+	plugins: [
+		require('flowbite/plugin')({
+			charts: true,
+		}),
+	],
 };

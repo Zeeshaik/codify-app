@@ -12,13 +12,19 @@ import Level8 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels
 import Level9 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level9';
 import Topbar from '@/components/Topbar/Topbar';
 import React, { useEffect, useState } from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, firestore } from "@/firebase/firebase";
+import Level12 from '@/components/GameLevels/JavaLevels/MultipleStatements Levels/Level12';
 
 
 const MultipleStatements = () => {
-  
+  const [user, loading] = useAuthState(auth);
   const [currentLevel, setCurrentLevel] = useState(1);
+
   useEffect(() => {
-    const storedLevel = localStorage.getItem('1');
+    const storedLevel = localStorage.getItem('currentLevel');
     if (storedLevel) {
       setCurrentLevel(parseInt(storedLevel, 10));
     }
@@ -27,7 +33,6 @@ const MultipleStatements = () => {
   const handleLevelComplete = () => {
     const nextLevel = currentLevel + 1;
 
-    // Save the next level to localStorage
     localStorage.setItem('currentLevel', String(nextLevel));
 
     setCurrentLevel(nextLevel);
@@ -40,26 +45,64 @@ const MultipleStatements = () => {
 
     setCurrentLevel(previousLevel);
   };
+
+  const renderLevelComponent = () => {
+    if (loading) {
+      return <div>Loading...</div>; // You can replace this with a loading indicator
+    }
+
+    switch (currentLevel) {
+      case 1:
+        return <Level1 onComplete={handleLevelComplete} />;
+      case 2:
+        return <Level2 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 3:
+        return <Level3 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 4:
+        return <Level4 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 5:
+        return <Level5 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 6:
+        return <Level6 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 7:
+        return <Level7 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 8:
+        return <Level8 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 9:
+        return <Level9 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 10:
+        return <Level10 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
+      case 11:
+        return <Level11 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete}/>;
+      case 12:
+        return <Level12 onPrevious={handlePreviousLevel}/>;
+      default:
+        return null;
+    }
+  };
+
+ 
   return (
-    <div className=' bg-dark-layer-2 min-h-screen'>
-      <Topbar />
-      <div>
-        <h1 className='text-4xl font-bold mb-4 md:ml-[550px] text-white mt-7'>Multiple Statements</h1>
-        {/* Render components based on the current level */}
-        {currentLevel === 1 && <Level1 onComplete={handleLevelComplete} />}
-        {currentLevel === 2 && <Level2 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 3 && <Level3 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 4 && <Level4 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 5 && <Level5 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 6 && <Level6 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 7 && <Level7 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 8 && <Level8 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 9 && <Level9 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 10 && <Level10 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />}
-        {currentLevel === 11 && <Level11 onPrevious={handlePreviousLevel}  />}
-        {/* Add more levels as needed */}
+    <DndProvider backend={HTML5Backend}>
+      <div className=' bg-dark-layer-2 min-h-screen'>
+        <Topbar />
+        { user ? (
+        <div>
+          <h1 className=' text-2xl md:text-4xl font-bold mb-4 text-center text-white mt-7'>
+            Multiple Statements
+          </h1>
+          {/* Render components based on the current level */}
+          {renderLevelComponent()}
+        </div>
+        ) : (
+          
+          <div className='bg-dark-layer-2 min-h-screen flex items-center justify-center text-white'>
+            
+          <p>Please login to access the introduction levels.</p>
+        </div>
+        )}
       </div>
-    </div>
+    </DndProvider>
   );
 };
 
