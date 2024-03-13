@@ -74,16 +74,7 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 				)}
 
 				<div className='flex items-center space-x-4 flex-1 justify-end'>
-					<div>
-						<a
-							href='https://www.buymeacoffee.com/burakorkmezz'
-							target='_blank'
-							rel='noreferrer'
-							className='bg-dark-fill-3 py-1.5 px-3 cursor-pointer rounded text-brand-orange hover:bg-dark-fill-2'
-						>
-							Premium
-						</a>
-					</div>
+					
 					{!user && (
 						<Link
 							href='/auth'
@@ -94,7 +85,8 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 					)}
 					{user && problemPage && <Timer />}
 					{user && (
-						<div className='cursor-pointer group relative'>
+						 <Link href='/profile'>
+						<div className='cursor-pointer group relative profile'>
 							<Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' />
 							<div
 								className='absolute top-10 left-2/4 -translate-x-2/4  mx-auto bg-dark-layer-1 text-brand-orange p-2 rounded shadow-lg 
@@ -104,6 +96,7 @@ const Topbar: React.FunctionComponent<ITopbarProps> = ({ problemPage }) => {
 								<p className='text-sm'>{user.email}</p>
 							</div>
 						</div>
+						</Link>
 					)}
 					{user && <Logout />}
 				</div>

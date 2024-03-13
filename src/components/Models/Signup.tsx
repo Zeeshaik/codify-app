@@ -14,7 +14,7 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 	const handleClick = () => {
 		setAuthModalState((prev) => ({ ...prev, type: "login" }));
 	};
-	const [inputs, setInputs] = useState({ email: "", displayName: "", password: "" });
+	const [inputs, setInputs] = useState({ email: "", displayName: "", password: "",  profilePhoto: null, });
 	const router = useRouter();
 	const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
 	const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +40,15 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 				starredProblems: [],
 				coins : 0,
 				tags : [],
+				profilePhoto: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
+				Name: "",
+				Gender: "",
+				Location: "",
+				Birthday: "",
+				Education: [],
+				Skills: [],
+				About: "",
+				Languages : [],
 			};
 			await setDoc(doc(firestore, "users", newUser.user.uid), userData);
 			router.push("/");

@@ -18,6 +18,7 @@ import Level7 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level7
 import Level8 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level8';
 import Level9 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level9';
 
+
 const IntroductionLevel = () => {
   const [user, loading] = useAuthState(auth);
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -73,6 +74,7 @@ const IntroductionLevel = () => {
         return <Level10 onPrevious={handlePreviousLevel} onComplete={handleLevelComplete} />;
       case 11:
         return <Level11 onPrevious={handlePreviousLevel} />;
+      
       default:
         return null;
     }

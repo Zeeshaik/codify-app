@@ -36,7 +36,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[500px] md:h-[700px] relative overflow-hidden w-full m-auto mt-10 text-xs md:w-[1000px] md:mt-10"
-        style={{ fontFamily: "cursive" }}
+        
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -51,7 +51,7 @@ const Level2: React.FC<Level2Props> = ({ onComplete, onPrevious }) => {
         <div className="header text-white mt-5 md:mt-9 ml-5 md:ml-16">
           <h2 className="font-bold mb-4 text-2xl md:text-4xl underline">Coding</h2>
         </div>
-        <div className="absolute top-[340px] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-left text-sm md:text-2xl font-bold w-full md:w-[800px] px-5">
+        <div className="absolute top-[240px] left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-left text-sm md:text-2xl font-bold w-full md:w-[800px] px-5">
           <p className="mb-4">
             A line of code is called a statement. A statement performs a specific task.
           </p>
