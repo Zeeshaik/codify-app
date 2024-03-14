@@ -24,10 +24,7 @@ export default function Home() {
         <Topbar />
         <HeroSec />
         <Sections />
-
-        <br />
-        <br />
-        <br />
+        <br /><br /><br />
         <MemoryGame />
         <Footer />
       </main>

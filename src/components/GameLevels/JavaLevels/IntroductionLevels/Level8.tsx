@@ -36,6 +36,7 @@ const Level8: React.FC<Level8Props> = ({ onComplete, onPrevious }) => {
   const [selectedOption, setSelectedOption] = React.useState<string | null>(null);
   const [isOptionDropped, setIsOptionDropped] = React.useState(false);
   const [correctOption, setCorrectOption] = React.useState(false);
+  const[isCorrectOption, setIsCorrectOption] = React.useState(false);
   const handleDrop = (droppedOption: string) => {
     //Change the component text from current text to New Message
     setIsOptionDropped(true);
@@ -49,6 +50,7 @@ const Level8: React.FC<Level8Props> = ({ onComplete, onPrevious }) => {
         autoClose: 3000,
         theme: "dark",
       });
+      setIsCorrectOption(true);
       // Handle other logic for correct drop
     } else {
       setCorrectOption(true);
@@ -103,7 +105,7 @@ const Level8: React.FC<Level8Props> = ({ onComplete, onPrevious }) => {
           </div>
         </div>
         { correctOption ? <TryAgain /> : ''}
-        <Continue onComplete={handleComplete} />
+        {isCorrectOption ? <Continue onComplete={handleComplete} /> : '' }
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

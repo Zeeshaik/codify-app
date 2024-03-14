@@ -18,17 +18,12 @@ export default function Example() {
           </p>
           <div className="flex items-center space-x-6">
             <a
-              href="javascript:void(0)"
+              href="#mainSection"
               className="border border-orange-500 md:text-xl px-5 py-3 md:px-8 md:py-3 text-white bg-orange-500 rounded-md hover:bg-dark-layer-2 hover:border-orange-500 hover:text-orange-500"
             >
               Get Started
             </a>
-            <a
-              href="javascript:void(0)"
-              className="md:text-xl px-8 py-3 text-orange-500 bg-white rounded-md"
-            >
-              See More
-            </a>
+           
           </div>
         </div>
         <div>

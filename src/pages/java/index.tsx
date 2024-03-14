@@ -11,9 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase";
 import AllUsers from "@/components/AllUsers/AllUsers";
 
-export interface IJavaHomePageProps {
-  
-}
+export interface IJavaHomePageProps {}
 
 export function JavaHomePage(props: IJavaHomePageProps) {
   const [user, loading] = useAuthState(auth);
@@ -140,7 +138,7 @@ export function JavaHomePage(props: IJavaHomePageProps) {
           <br />
           <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
             <a
-              href="javascript:void(0)"
+              href="#level-section"
               className="text-xl px-8 py-3 text-white bg-orange-500 rounded-md mb-4 sm:mb-0"
               onClick={scrollToLanguagesSection}
             >
@@ -157,18 +155,22 @@ export function JavaHomePage(props: IJavaHomePageProps) {
       </section>
       <br />
       {/* Levels Section */}
-      <h3 className="text-2xl sm:text-3xl md:text-2xl lg:text-5xl  underline  font-bold text-center sm:text-left text-white md:ml-72 mb-10">
-        Start Learning Java
-      </h3>
-      <div className="md:flex ">
-        <div className=" md:mt-20">
-          
-          <Levels />
-        </div>
-        <div className="p-4 md:p-0 md:ml-[500px] ">
-          <AllUsers />
+      <div id="level-section">
+        <h3 className="text-2xl sm:text-3xl md:text-2xl lg:text-5xl  underline  font-bold text-center sm:text-left text-white md:ml-72 mb-10">
+          Start Learning Java
+        </h3>
+        <div className="md:flex ">
+          <div className=" md:mt-20">
+            <Levels />
+          </div>
+          <div className="p-4 md:p-0 md:ml-[500px] ">
+            <AllUsers />
+          </div>
         </div>
       </div>
+
+      {/* footer */}
+      <FooterComponent/>
     </div>
   );
 }

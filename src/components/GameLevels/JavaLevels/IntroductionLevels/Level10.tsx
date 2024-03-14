@@ -72,7 +72,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
   };
   return (
     <div>
-      <div className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[1000px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80">
+      <div className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[1050px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80">
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
           icon={faCoffee}
@@ -88,7 +88,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
             Solve Puzzle
           </h2>
         </div>
-        <div className="absolute top-[450px] md:top-[350px] left-1/2 md:flex -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
+        <div className="absolute top-[500px] md:top-[350px] left-1/2 md:flex -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
           <Image
             src={"/puzzel1.png"}
             width={350}
@@ -146,7 +146,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
             </div>
           </div>
         </div>
-       <Continue onComplete={handleComplete} /> 
+       {flag && (<Continue onComplete={handleComplete} />)} 
         <Previous onPrevious={handlePrevious} />
 
         {/* Add your content here */}

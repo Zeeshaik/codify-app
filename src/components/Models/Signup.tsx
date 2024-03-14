@@ -38,6 +38,7 @@ const SingUp: React.FunctionComponent<ISingUpProps> = (props) => {
 				dislikedProblems: [],
 				solvedProblems: [],
 				starredProblems: [],
+				levelsCompleted: [],
 				coins : 0,
 				tags : [],
 				profilePhoto: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",

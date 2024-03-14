@@ -104,7 +104,7 @@ const Level7: React.FC<Level7Props> = ({ onComplete, onPrevious }) => {
           </div>
         </div>
 
-        <Continue onComplete={handleComplete} />
+        {isOptionDropped && (<Continue onComplete={handleComplete} />)}
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

@@ -71,6 +71,7 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
     setCode(droppedOption);
     
   };
+  const[check, setCheck] = useState(false);
   const handleCheck = () => {
     setCorrectOption(isOptionsCorrect);
     if (isOptionsCorrect) {
@@ -79,6 +80,7 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
         autoClose: 3000,
         theme: "dark",
       });
+      setCheck(true);
     } else {
       toast.error("Incorrect option dropped. Try again.", {
         position: "top-center",
@@ -172,7 +174,8 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
           Check
         </button>
 
-        {correctOption ? <Continue onComplete={handleComplete} /> : <TryAgain />}
+        {correctOption ? '' : <TryAgain />}
+        {check ? <Continue onComplete={handleComplete} /> : '' }
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

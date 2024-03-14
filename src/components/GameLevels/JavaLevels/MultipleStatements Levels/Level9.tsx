@@ -36,11 +36,13 @@ const Level9: React.FC<Level9Props> = ({ onComplete, onPrevious }) => {
   const [selectedOption, setSelectedOption] = React.useState<string | null>(null);
   const [isOptionDropped, setIsOptionDropped] = React.useState(false);
   const [correctOption, setCorrectOption] = React.useState(false);
+  const[check , setCheck] = React.useState(false);
   const handleDrop = (droppedOption: string) => {
     //Change the component text from current text to New Message
     setIsOptionDropped(true);
     setSelectedOption(droppedOption);
     setCode(droppedOption);
+
     // Validate if the dropped option is correct
     if (droppedOption === "System") {
       
@@ -49,6 +51,7 @@ const Level9: React.FC<Level9Props> = ({ onComplete, onPrevious }) => {
         autoClose: 3000,
         theme: "dark",
       });
+      setCheck(true);
       // Handle other logic for correct drop
     } else {
       setCorrectOption(true);
@@ -106,7 +109,7 @@ const Level9: React.FC<Level9Props> = ({ onComplete, onPrevious }) => {
           </div>
         </div>
         { correctOption ? <TryAgain /> : ''}
-        <Continue onComplete={handleComplete} />
+        {check &&(<Continue onComplete={handleComplete} />)}
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>
