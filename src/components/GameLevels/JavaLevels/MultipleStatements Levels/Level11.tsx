@@ -30,7 +30,7 @@ const Level11: React.FC<Level11Props> = ({ onComplete, onPrevious }) => {
     <div>
       <div
         className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[700px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10"
-        style={{ fontFamily: "cursive" }}
+       
       >
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
@@ -43,7 +43,7 @@ const Level11: React.FC<Level11Props> = ({ onComplete, onPrevious }) => {
         />
 
 <div className="code-challenge">
-          <CodeSequencerChallenge />
+          <h1 className=" text-2xl text-center  mt-24 text-white">Game will be added pretty soon, Under Development - In progress</h1>
         </div>
         <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />

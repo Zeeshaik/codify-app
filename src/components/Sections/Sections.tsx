@@ -36,8 +36,8 @@ const ProjectCard: React.FC<ISectionsProps> = ({ image, title, description, link
     <Image
   src={image}
   alt="project_image"
-  className="m-auto md:w-full md:h-full object-cover rounded-2xl"
-  width={200}
+  className="m-auto w-full h-full object-cover rounded-2xl"
+  width={150}
   height={200}
 />
       
@@ -57,8 +57,8 @@ const ProjectCard: React.FC<ISectionsProps> = ({ image, title, description, link
 );
 
 const Sections: React.FC = () => (
-  <main className="px-4 md:px-8 lg:px-16 xl:px-20">
-    <h1 className="text-4xl lg:text-5xl font-bold text-center mb-8 text-brand-orange">
+  <main className="px-4 md:px-8 lg:px-16 xl:px-20" id="mainSection">
+    <h1 className="text-4xl lg:text-5xl font-bold text-center mb-8 text-brand-orange pt-8">
       Play To Learn
     </h1>
     <div className="flex flex-wrap gap-10 text-center">

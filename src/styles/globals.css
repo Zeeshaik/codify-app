@@ -231,7 +231,9 @@ code {
     background-color: #3a393c;
   }
   
-  
+  html {
+    scroll-behavior: smooth;
+  }
 .container1 {
   display: flex;
   align-items: center;

@@ -59,13 +59,13 @@ const Problems: React.FunctionComponent<IProblemsProps> = (props) => {
             </div>
             <div className="flex flex-col items-center sm:flex-row sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
               <a
-                href="javascript:void(0)"
+                href="#problems-section"
                 className="text-xl px-8 py-3 text-white bg-orange-500 rounded-md mb-4 sm:mb-0"
               >
                 Get Started
               </a>
               <a
-                href="https://docs.oracle.com/en/java/"
+                href="https://workat.tech/problem-solving"
                 className="text-xl px-8 py-3 text-gray-500 bg-white rounded-md"
               >
                 See More
@@ -73,46 +73,47 @@ const Problems: React.FunctionComponent<IProblemsProps> = (props) => {
             </div>
           </div>
         </section>
-        <h1
-          className="text-2xl text-center text-gray-700 dark:text-gray-400 font-medium
+        <div id="problems-section">
+          <h1
+            className="text-2xl text-center text-gray-700 dark:text-gray-400 font-medium
 					uppercase mt-10 mb-5"
-        >
-          &ldquo; QUALITY OVER QUANTITY &rdquo; 👇
-        </h1>
-        <div className="relative overflow-x-auto mx-auto px-6 pb-10">
-          {loadingProblems && (
-            <div className="max-w-[1200px] mx-auto sm:w-7/12 w-full animate-pulse">
-              {[...Array(10)].map((_, idx) => (
-                <LoadingSkeleton key={idx} />
-              ))}
-            </div>
-          )}
-          <table className="text-sm text-left text-gray-500 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto">
-            {!loadingProblems && (
-              <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border-b ">
-                <tr>
-                  <th scope="col" className="px-1 py-3 w-0 font-medium">
-                    Status
-                  </th>
-                  <th scope="col" className="px-6 py-3 w-0 font-medium">
-                    Title
-                  </th>
-                  <th scope="col" className="px-6 py-3 w-0 font-medium">
-                    Difficulty
-                  </th>
-
-                  <th scope="col" className="px-6 py-3 w-0 font-medium">
-                    Category
-                  </th>
-                  <th scope="col" className="px-6 py-3 w-0 font-medium">
-                    Solution
-                  </th>
-                </tr>
-              </thead>
+          >
+            &ldquo; QUALITY OVER QUANTITY &rdquo; 👇
+          </h1>
+          <div className="relative overflow-x-auto mx-auto px-6 pb-10">
+            {loadingProblems && (
+              <div className="max-w-[1200px] mx-auto sm:w-7/12 w-full animate-pulse">
+                {[...Array(10)].map((_, idx) => (
+                  <LoadingSkeleton key={idx} />
+                ))}
+              </div>
             )}
-            <ProblemsTable setLoadingProblems={setLoadingProblems} />
-          </table>
-          
+            <table className="text-sm text-left text-gray-500 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto">
+              {!loadingProblems && (
+                <thead className="text-xs text-gray-700 uppercase dark:text-gray-400 border-b ">
+                  <tr>
+                    <th scope="col" className="px-1 py-3 w-0 font-medium">
+                      Status
+                    </th>
+                    <th scope="col" className="px-6 py-3 w-0 font-medium">
+                      Title
+                    </th>
+                    <th scope="col" className="px-6 py-3 w-0 font-medium">
+                      Difficulty
+                    </th>
+
+                    <th scope="col" className="px-6 py-3 w-0 font-medium">
+                      Category
+                    </th>
+                    <th scope="col" className="px-6 py-3 w-0 font-medium">
+                      Solution
+                    </th>
+                  </tr>
+                </thead>
+              )}
+              <ProblemsTable setLoadingProblems={setLoadingProblems} />
+            </table>
+          </div>
         </div>
         <br />
         <FooterComponent />

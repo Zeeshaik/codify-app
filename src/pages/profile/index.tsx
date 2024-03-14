@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestore, storage } from "@/firebase/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import Topbar from "@/components/Topbar/Topbar";
 import BufferingSpinner from "@/components/Buffering/BufferingSpinner";
 import { Bar, Line } from "react-chartjs-2";
@@ -16,6 +16,10 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { useState } from "react";
+import BarChart from "@/components/Graphs/BarGraph";
+import LineChart from "@/components/Graphs/LineChart";
+import CircularProgress from "@/components/Graphs/CircularProgress";
+import ProgressComponent from "@/components/Graphs/ProgressComponent";
 
 interface IProfileProps {}
 
@@ -34,19 +38,50 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
       if (user) {
         try {
           const userRef = doc(firestore, "users", user.uid);
-          const userDoc = await getDoc(userRef);
-          if (userDoc.exists()) {
-            setUserData(userDoc.data());
-          }
+          const unsubscribe = onSnapshot(userRef, (doc) => {
+            if (doc.exists()) {
+              setUserData(doc.data());
+            }
+          });
+          
+          // Return the unsubscribe function to clean up the subscription
+          return () => unsubscribe();
         } catch (error) {
           console.error("Error fetching user data:", error);
         }
       }
       setLoading(false);
     };
+    
     getUserData();
   }, [user]);
+  
+  interface UserData {
+    id: string;
+    username: string;
+    email: string;
+    score: number;
+  }
+  const [data, setData] = React.useState<UserData[]>([]);
+  React.useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(firestore, "users"),
+      (snapshot) => {
+        const userData: UserData[] = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          username: doc.data().displayName,
+          email: doc.data().email,
+          score: doc.data().coins,
+        }));
 
+        userData.sort((a, b) => b.score - a.score);
+        setData(userData);
+      }
+    );
+    return () => unsubscribe();
+  }, []);
+
+  let userRank = data.findIndex((user) => user.id === auth.currentUser?.uid);
   const handleEditProfileClick = () => {
     router.push("/profile/edit-profile");
   };
@@ -72,20 +107,14 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
     // Add more languages as needed
   ];
 
+  const dataForChart = [];
+  if(dataForChart.length === 0) dataForChart.push({timestamp: userData?.createdAt, score: userData?.coins});
+  dataForChart.push({timestamp: userData?.updatedAt, score: userData?.coins});
 
-  const barChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label: 'Sales',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1,
-      },
-    ],
-  };
-  
+  interface IUserScoreData {
+    timestamp: number;
+    score: number;
+  }
 
   const toggleExpanded1 = () => {
     setExpanded1(!expanded1);
@@ -109,9 +138,7 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
                 <div>
                   <h2>{userData?.displayName || "User"}</h2>
                   <p>{userData?.email}</p>
-                  <p>
-                    <span className="opacity-75">Rank</span> 2342
-                  </p>
+                  
                 </div>
               </div>
             </div>
@@ -141,14 +168,7 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
                     className={`pl-4 pr-0 text-justify h-[80px] overflow-y-auto`}
                   >
                     <p className=" border-white">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                      enim ipsam voluptatem quia voluptas sit aspernatur aut
-                      odit aut fugit, sed quia consequuntur magni dolores eos
-                      qui ratione voluptatem sequi nesciunt.
+                      {userData?.About || "No bio available"}
                     </p>
                   </div>
                 </div>
@@ -156,7 +176,7 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
                 <div className="flex items-center gap-2 text-gray-300 text-[15px] mb-2">
                   <AiOutlineUser size={25} color="skyblue" />
                   <p>Gender</p>
-                  <p>Male</p>
+                  <p>{userData?.Gender || "No Gender available"}</p>
                 </div>
               </div>
             </div>
@@ -201,40 +221,62 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
 
               <div className="bg-dark-layer-1 rounded-lg p-2 md:w-[850px] md:flex md:flex-row flex flex-col gap-4">
                 <div className="rounded-lg p-6 w-[400px] flex gap-6 md:justify-center">
-                  <div className="p-6 bg-gray-900 rounded-lg flex items-center justify-center flex-col text-white md:w-[150px]">
-                    <h1 className="md:text-5xl text-3xl font-extrabold mb-3">
-                      1200
+                  <div className="p-2 bg-gray-900 rounded-lg flex items-center justify-center flex-col w-[100px] h-[150px] text-white md:w-[200px]">
+                    <h1 className="md:text-7xl text-5xl font-extrabold mb-3">
+                      {userRank + 1 || 0}
                     </h1>
                     <p className="text-lg font-mono">Rank</p>
                   </div>
-                  <div className="p-6 bg-gray-900 rounded-lg flex items-center justify-center flex-col text-white md:w-[150px]">
-                    <h1 className="md:text-5xl text-3xl font-extrabold mb-3">
-                      2342
+                  <div className="p-2  rounded-lg flex items-center justify-center flex-col  w-[150px] h-[150px] text-white md:w-[150px]">
+                    <img src="/coins3.png" className="w-[150px] h-[150px] " />
+                    <h1 className="md:text-4xl text-3xl font-extrabold mb-3">
+                      {userData?.coins}
                     </h1>
-                    <p className="text-lg font-mono">Coins</p>
+                    
                   </div>
                 </div>
 
                 <div className=" border-2"></div>
-                <div className=" rounded-lg p-6 w-[400px]">
-                  <div className="mx-auto w-11/12 overflow-hidden md:w-3/5">
-                    
+                <div className=" rounded-lg p-3 md:w-[400px]">
+                  <div className="mx-auto w-11/12 overflow-hidden md:w-3/5 text-orange-400">
+                    <LineChart data={dataForChart} />
                   </div>
                 </div>
               </div>
               {/* Third Card */}
               <div className=" rounded-lg  md:w-[850px] md:flex md:flex-row flex flex-col gap-4">
-                <div className="bg-dark-layer-1 rounded-lg p-6 md:w-[420px]">
-                  Graph Chart
+                <div className="bg-dark-layer-1 rounded-lg p-6 md:w-[420px] flex">
+                  <div>
+                    <ProgressComponent />
+                  </div>
                 </div>
-                <div className="bg-dark-layer-1 rounded-lg p-6 md:w-[420px]">
-                  Bar Chart
+                <div className="bg-dark-layer-1 rounded-lg p-6 md:w-[420px] flex gap-4 justify-center">
+                  <div className="p-5  rounded-lg flex items-center justify-center flex-col text-white md:w-[150px]">
+                    
+                    <p className="text-sm font-mono mb-3">Fav Problems</p>
+                    {/* if liked problems is not available then show no Favourites */}
+                    {userData?.likedProblems ? (
+                      <h1 className="md:text-5xl text-3xl font-extrabold mb-3">
+                        {userData.starredProblems.length}
+                      </h1>
+                    ) : (
+                      <h1 className="md:text-5xl text-3xl font-extrabold mb-3">
+                        0
+                      </h1>
+                    )}
+                  </div>
+                  <div className="p-6 bg-gray-900 rounded-lg flex items-center justify-center flex-col text-white md:w-[150px]">
+                  <p className="text-sm font-mono mb-3">Badges</p>
+                  <h1 className="md:text-5xl text-3xl font-extrabold mb-3">
+                        {userData?.tags.length || 0}
+                      </h1>
+                  </div>
                 </div>
               </div>
 
               {/* Fourth Card */}
               <div className="bg-dark-layer-1 rounded-lg p-6 md:w-[850px] flex justify-center">
-                <AllUsers />
+                <AllUsers isProfile = {true}/>
               </div>
             </div>
           </div>

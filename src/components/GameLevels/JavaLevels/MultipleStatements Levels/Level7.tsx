@@ -114,8 +114,8 @@ const Level7: React.FC<Level7Props> = ({ onComplete, onPrevious }) => {
 
           <div className=" italic font-light">
             <p>Head East</p>
-            <p>Turn Left</p>
             <p>Cross the Road</p>
+            <p>Turn Left</p>
           </div>
 
           <div className=" mt-4 font-mono bg-black p-4 md:p-0 text-lg md:text-2xl">

@@ -9,6 +9,7 @@ import { java } from "@/utils/java";
 import Previous from "@/components/Buttons/Previous";
 import LessonComplete from "@/components/LessoonComplete/LessonComplete";
 import SubmitLevel from "@/components/Buttons/SubmitLevel";
+import CompletedBtn from "@/components/Buttons/CompleteLevel";
 interface Level12Props {
   onPrevious: () => void; // Callback for going to the previous level
 }
@@ -60,7 +61,7 @@ const Level12: React.FC<Level12Props> = ({ onPrevious }) => {
         <p>You learned Getting started with Java. You&apos;re one step closer to reachin your goals. </p>
         </div>
         <Previous onPrevious={handlePrevious} />
-       
+        <CompletedBtn level="multipleStatements" />
         {/* Add your content here */}
       </div>
 
