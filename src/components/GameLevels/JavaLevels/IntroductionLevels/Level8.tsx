@@ -105,7 +105,8 @@ const Level8: React.FC<Level8Props> = ({ onComplete, onPrevious }) => {
           </div>
         </div>
         { correctOption ? <TryAgain /> : ''}
-        {isCorrectOption ? <Continue onComplete={handleComplete} /> : '' }
+        {/* {isCorrectOption ? <Continue onComplete={handleComplete} /> : '' } */}
+        <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

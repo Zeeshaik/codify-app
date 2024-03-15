@@ -17,12 +17,13 @@ import Level6 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level6
 import Level7 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level7';
 import Level8 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level8';
 import Level9 from '@/components/GameLevels/JavaLevels/IntroductionLevels/Level9';
+import next from 'next';
 
 
 const IntroductionLevel = () => {
   const [user, loading] = useAuthState(auth);
   const [currentLevel, setCurrentLevel] = useState(1);
-
+  
   useEffect(() => {
     const storedLevel = localStorage.getItem('currentLevel');
     if (storedLevel) {
@@ -34,7 +35,7 @@ const IntroductionLevel = () => {
     const nextLevel = currentLevel + 1;
 
     localStorage.setItem('currentLevel', String(nextLevel));
-
+    
     setCurrentLevel(nextLevel);
   };
 
@@ -92,6 +93,7 @@ const IntroductionLevel = () => {
           </h1>
           {/* Render components based on the current level */}
           {renderLevelComponent()}
+          `<>{currentLevel }</>`
         </div>
         ) : (
           
