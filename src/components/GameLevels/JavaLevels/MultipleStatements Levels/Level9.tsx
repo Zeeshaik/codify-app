@@ -109,7 +109,8 @@ const Level9: React.FC<Level9Props> = ({ onComplete, onPrevious }) => {
           </div>
         </div>
         { correctOption ? <TryAgain /> : ''}
-        {check &&(<Continue onComplete={handleComplete} />)}
+        {/* {check &&(<Continue onComplete={handleComplete} />)} */}
+        <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

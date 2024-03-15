@@ -146,7 +146,8 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
             </div>
           </div>
         </div>
-       {flag && (<Continue onComplete={handleComplete} />)} 
+       {/* {flag && (<Continue onComplete={handleComplete} />)}  */}
+        <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />
 
         {/* Add your content here */}

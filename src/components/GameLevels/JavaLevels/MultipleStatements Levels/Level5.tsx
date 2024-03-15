@@ -175,7 +175,8 @@ const Level5: React.FC<Level5Props> = ({ onComplete, onPrevious }) => {
         </button>
 
         {correctOption ? '' : <TryAgain />}
-        {check ? <Continue onComplete={handleComplete} /> : '' }
+        {/* {check ? <Continue onComplete={handleComplete} /> : '' } */}
+        <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />
         {/* Add your content here */}
       </div>

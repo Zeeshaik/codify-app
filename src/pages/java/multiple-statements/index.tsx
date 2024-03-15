@@ -21,29 +21,29 @@ import Level12 from '@/components/GameLevels/JavaLevels/MultipleStatements Level
 
 const MultipleStatements = () => {
   const [user, loading] = useAuthState(auth);
-  const [currentLevel, setCurrentLevel] = useState(1);
+  const [currentLevel1, setCurrentLevel1] = useState(1);
 
   useEffect(() => {
-    const storedLevel = localStorage.getItem('currentLevel');
+    const storedLevel = localStorage.getItem('currentLevel1');
     if (storedLevel) {
-      setCurrentLevel(parseInt(storedLevel, 10));
+      setCurrentLevel1(parseInt(storedLevel, 10));
     }
   }, []);
 
   const handleLevelComplete = () => {
-    const nextLevel = currentLevel + 1;
+    const nextLevel = currentLevel1 + 1;
 
-    localStorage.setItem('currentLevel', String(nextLevel));
+    localStorage.setItem('currentLevel1', String(nextLevel));
 
-    setCurrentLevel(nextLevel);
+    setCurrentLevel1(nextLevel);
   };
 
   const handlePreviousLevel = () => {
-    const previousLevel = Math.max(1, currentLevel - 1);
+    const previousLevel = Math.max(1, currentLevel1 - 1);
 
-    localStorage.setItem('currentLevel', String(previousLevel));
+    localStorage.setItem('currentLevel1', String(previousLevel));
 
-    setCurrentLevel(previousLevel);
+    setCurrentLevel1(previousLevel);
   };
 
   const renderLevelComponent = () => {
@@ -51,7 +51,7 @@ const MultipleStatements = () => {
       return <div>Loading...</div>; // You can replace this with a loading indicator
     }
 
-    switch (currentLevel) {
+    switch (currentLevel1) {
       case 1:
         return <Level1 onComplete={handleLevelComplete} />;
       case 2:
