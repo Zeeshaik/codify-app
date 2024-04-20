@@ -142,14 +142,7 @@ const Profile: React.FunctionComponent<IProfileProps> = (props) => {
                 </div>
               </div>
             </div>
-            <div className=" mt-4">
-              <button
-                className="bg-brand-orange py-1 px-4 rounded-md text-white w-full"
-                onClick={handleEditProfileClick}
-              >
-                Edit Profile
-              </button>
-            </div>
+          
             <hr className="my-4 border-t border-gray-700" />
             <div className="w-[250px]">
               <h3 className="font-bold text-md">Community Status</h3>
