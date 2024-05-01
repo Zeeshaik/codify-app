@@ -12,7 +12,6 @@ interface Level10Props {
 }
 
 const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
-  
   const handleComplete = () => {
     console.log("Level 1 completed!");
     onComplete();
@@ -72,7 +71,7 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
   };
   return (
     <div>
-      <div className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[1050px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80">
+      <div className="play-ground bg-gradient-to-r from-orange-500/80 to-red-700/80 backdrop-blur-md h-[650px] md:h-[700px] relative overflow-hidden md:w-[1000px] m-auto md:mt-10 sm:text-xs sm:mt-80">
         {/* Adding Java-related icons to the background */}
         <FontAwesomeIcon
           icon={faCoffee}
@@ -88,65 +87,20 @@ const Level10: React.FC<Level10Props> = ({ onComplete, onPrevious }) => {
             Solve Puzzle
           </h2>
         </div>
-        <div className="absolute top-[500px] md:top-[350px] left-1/2 md:flex -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
-          <Image
-            src={"/puzzel1.png"}
-            width={350}
-            height={400}
-            className=" p-4 sm:w[10px]"
-            alt={""}
-          />
-          <div className=" ml-4">
-            <p>Can you solve this puzzle?</p>
-            <p>
-              🌟The monkey want&apos;s to reach the destination, Help him out by
-              printing the &quot;<span className=" font-bold">Output</span>
-              &quot;💡.
-            </p>
-            <p>
-              🌟<span className=" font-bold text-red">NOTE:</span> When there is
-              more than one direction print the correct direction 🧐
-            </p>
-            <div className=" mt-4 font-mono bg-black p-4 md:p-0 text-lg md:text-2xl">
-              <span className=" ml-[250px] md:ml-[350px] text-blue-700">
-                JAVA
-              </span>
-              <p className=" md:ml-[30px]  pb-3 flex">
-                <span className=" text-blue-800 inline-block">System</span>.
-                <span className=" text-pink-500 inline-block">out</span>
-                .println(
-                <span className=" text-green-600 inline-block ">
-                  &quot;
-                  <input
-                    type="text"
-                    className=" h-4 w-16 md:w-20 text-blue-600 p-4 rounded-md"
-                    onKeyPress={(event) => {
-                      if (event.key === 'Enter') {
-                        handleAdd();
-                      }
-                    }}
-                  />
-                  &quot;
-                </span>
-                );
-              </p>
-            </div>
-            <label className="text-green-500 font-mono">
-              {" "}
-              Only options: Right/Left/MoveOn
-            </label>
+        <div className="absolute top-[300px] md:top-[350px] left-1/2 md:flex -translate-x-1/2 -translate-y-1/2 text-white text-left  text-xl md:text-2xl md:font-bold w-[350px] md:w-[800px]">
+          <div className=" ml-6 md:ml-[250px]">
             <div className="flex justify-between">
-              <button
-                className="bg-green-500 text-white p-2 rounded-md mt-4"
-                onClick={handleAdd}
+              <a
+                href="https://zeeshaik.github.io/Maze-Game-main/"
+                className="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out flex items-center justify-center"
+                style={{ width: "290px", height: "290px" }}
               >
-                Add
-              </button>
-              <button className="bg-red-500 text-white p-1  rounded-md mt-4" onClick={handleSubmit}>Submit</button>
+                Play 
+              </a>
             </div>
           </div>
         </div>
-       {/* {flag && (<Continue onComplete={handleComplete} />)}  */}
+        {/* {flag && (<Continue onComplete={handleComplete} />)}  */}
         <Continue onComplete={handleComplete} />
         <Previous onPrevious={handlePrevious} />
 
